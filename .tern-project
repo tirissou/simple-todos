@@ -1,0 +1,14 @@
+{
+    "libs" : [
+        "browser", "jquery"
+    ],
+    "loadEagerly" : ["./client/main.js"],
+    "plugins":{
+        "node" : {}, 
+        "es_modules":{},
+        "requirejs" : {
+            "baseURL" : "./"
+        },
+        "modules" : {}
+    }
+}
