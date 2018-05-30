@@ -9,10 +9,9 @@ import Task from './Task.js';
 
 // App component - represents the whole app
 class App extends Component {
-
-	static propTypes = {
-		tasks: PropTypes.array.isRequired,
-	}
+  static propTypes = {
+    tasks: PropTypes.array.isRequired,
+  }
 
   getTasks() {
     return [{ _id: 1, text: 'This is task 1' }, { _id: 2, text: 'This is task 2' }, { _id: 3, text: 'This is task 3' }];

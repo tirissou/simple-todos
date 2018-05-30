@@ -4,20 +4,19 @@ import { Tasks } from '../api/tasks.js';
 
 // Task component - representing a single todo item
 export default class Task extends Component {
-
   static propTypes = {
     task: PropType.array.isRequired,
-  }
+  };
 
   toggleChecked = () => {
     Tasks.update(this.props.task._id, {
       $set: { checked: !this.props.task.checked },
     });
-  }
+  };
 
   deleteTask = () => {
     Tasks.remove(this.props.task._id);
-  }
+  };
 
   render() {
     // Give tasks a different className when they are checked off,
@@ -31,12 +30,7 @@ export default class Task extends Component {
           &times;
         </button>
 
-        <input
-          type="checkbox"
-          readOnly
-          checked={!!this.props.task.checked}
-          onClick={this.toggleChecked}
-        />
+        <input type="checkbox" readOnly checked={!!this.props.task.checked} onClick={this.toggleChecked} />
 
         <span className="text">{text}</span>
       </li>
