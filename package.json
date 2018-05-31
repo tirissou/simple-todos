@@ -8,7 +8,10 @@
     "@babel/runtime": "^7.0.0-beta.42",
     "babel-eslint": "^8.2.3",
     "bcrypt": "^2.0.1",
+<<<<<<< HEAD
     "classnames": "^2.2.5",
+=======
+>>>>>>> 6388892a8140660bb683b3f374b73c762c4a1a30
     "meteor-node-stubs": "^0.3.2",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
