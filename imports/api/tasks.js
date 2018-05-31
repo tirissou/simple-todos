@@ -34,6 +34,12 @@ Meteor.methods({
     check(taskId, String);
     check(setChecked, Boolean);
 
+    const task = Tasks.findOne(taskId);
+    if ( task.private && task.owner !== this.userId) {
+      // Anybody may check off public tasks, but only owners of private ones can check said private tasks off
+      throw new Meteor.Error('not-authorized');
+    } 
+
     Tasks.update(taskId, {$set: { checked: setChecked } });
   },
   'tasks.setPrivate'(taskId, setToPrivate) {

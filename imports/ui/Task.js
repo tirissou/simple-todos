@@ -27,6 +27,8 @@ export default class Task extends Component {
         <button className="delete" onClick={this.deleteTask}>
           &times;
         </button>
+        
+        { }
 
         <input type="checkbox" readOnly checked={!!this.props.task.checked} onClick={this.toggleChecked} />
 
