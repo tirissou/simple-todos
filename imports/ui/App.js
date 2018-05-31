@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
-import { Tasks } from '../api/tasks';
+import { Tasks } from '../api/tasks.js';
 import AccountsUIWrapper from './AccountsUIWrapper';
 
 import Task from './Task.js';
@@ -19,7 +19,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-
+    
     this.state = {
       hideCompleted: false,
     };
