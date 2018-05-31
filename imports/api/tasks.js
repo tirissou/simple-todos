@@ -38,9 +38,7 @@ Meteor.methods({
     if ( task.owner !== this.userId) {
       // Only the owner of a task may delete it
       throw new Meteor.Error('not-authorized');
-    } else { 
-      console.log('all good. \n user is logged in as '+this.userId+' and the owner is '+task.owner);
-    }
+    } 
 
     Tasks.remove(taskId);
   },
@@ -52,10 +50,7 @@ Meteor.methods({
     if ( task.private && task.owner !== this.userId) {
       // Anybody may check off public tasks, but only owners of private ones can check said private tasks off
       throw new Meteor.Error('not-authorized');
-    } else { 
-      console.log('all good. \n user is logged in as '+this.userId+' and the owner is '+task.owner);
-    }
-
+    } 
 
     Tasks.update(taskId, { $set: { checked: setChecked } });
   },
