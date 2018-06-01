@@ -6,10 +6,15 @@ import { Meteor } from 'meteor/meteor';
 export default class Task extends Component {
   static propTypes = {
     task: PropType.array.isRequired,
+    showPrivateButton: PropType.bool,
   };
 
   toggleChecked = () => {
     Meteor.call('tasks.setChecked', this.props.task._id, !this.props.task.checked);
+  };
+
+  togglePrivate= () => {
+    Meteor.call('tasks.setPrivate', this.props.task._id, !this.props.task.private);
   };
 
   deleteTask = () => {
@@ -24,11 +29,17 @@ export default class Task extends Component {
 
     return (
       <li className={taskClassName}>
-        <button className="delete" onClick={this.deleteTask}>
-          &times;
-        </button>
+        { this.props.showPrivateButton ?(
+          <button className="delete" onClick={this.deleteTask}>
+            &times;
+          </button>
+        ) : ''}
         
-        { }
+        { this.props.showPrivateButton ?(
+          <button className="toggle-private" onClick={this.togglePrivate}>
+            { this.props.task.private ? 'Private' : 'Public' }
+          </button>
+        ) : ''}
 
         <input type="checkbox" readOnly checked={!!this.props.task.checked} onClick={this.toggleChecked} />
 
