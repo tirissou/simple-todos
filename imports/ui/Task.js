@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropType from 'prop-types';
 import { Meteor } from 'meteor/meteor';
+import classnames from 'classnames';
 
 // Task component - representing a single todo item
 export default class Task extends Component {
   static propTypes = {
     task: PropType.array.isRequired,
     showPrivateButton: PropType.bool,
+    private: PropType.bool,
   };
 
   toggleChecked = () => {
@@ -24,7 +26,12 @@ export default class Task extends Component {
   render() {
     // Give tasks a different className when they are checked off,
     // so that we can style them nicely in CSS
-    const taskClassName = this.props.task.checked ? 'checked' : '';
+    const taskClassName = classnames({
+      checked: this.props.task.checked,
+      private: this.props.task.private,
+    });
+    
+    // this.props.task.checked ? 'checked' : '';
     const text = this.props.task.text;
 
     return (
@@ -35,13 +42,14 @@ export default class Task extends Component {
           </button>
         ) : ''}
         
+        <input type="checkbox" readOnly checked={!!this.props.task.checked} onClick={this.toggleChecked} />
+
         { this.props.showPrivateButton ?(
           <button className="toggle-private" onClick={this.togglePrivate}>
             { this.props.task.private ? 'Private' : 'Public' }
           </button>
         ) : ''}
 
-        <input type="checkbox" readOnly checked={!!this.props.task.checked} onClick={this.toggleChecked} />
 
         <span className="text">{text}</span>
       </li>
